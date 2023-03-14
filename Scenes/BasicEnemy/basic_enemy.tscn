@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_bxagc"]
 radius = 7.0
 
-[node name="BasicEnemy" type="CharacterBody2D"]
+[node name="BasicEnemy" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 0
 script = ExtResource("1_k2vko")
 
