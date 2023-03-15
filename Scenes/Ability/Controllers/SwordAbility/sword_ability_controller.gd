@@ -33,3 +33,7 @@ func on_timer_timeout():
 	#insert into scene tree
 	player.get_parent().add_child(sword_instance)
 	sword_instance.global_position = enemies[0].global_position
+	sword_instance.global_position += Vector2.RIGHT.rotated(randf_range(0, TAU)) * 4
+	
+	var enemy_direction = enemies[0].global_position - sword_instance.global_position
+	sword_instance.rotation = enemy_direction.angle()
