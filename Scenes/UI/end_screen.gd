@@ -11,6 +11,10 @@ func set_defeat():
 	$%TitleLabel.text = "Defeat"
 	$%DescriptionLabel.text = "You Lost!"
 	
+
+func set_victory():
+	$%TitleLabel.text = "Victory"
+	$%DescriptionLabel.text = "You Won!"
 	
 
 func on_restart_button_pressed():
