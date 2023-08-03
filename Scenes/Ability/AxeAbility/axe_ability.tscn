@@ -1,0 +1,77 @@
+[gd_scene load_steps=9 format=3 uid="uid://jev3xr2ltqab"]
+
+[ext_resource type="Script" path="res://Scenes/Ability/AxeAbility/axe_ability.gd" id="1_irkqv"]
+[ext_resource type="Texture2D" uid="uid://cj6lxkeew52yy" path="res://Scenes/Ability/AxeAbility/axe.png" id="1_nr60p"]
+[ext_resource type="PackedScene" uid="uid://b5mswvk1g0iyr" path="res://Scenes/Component/hitbox_component.tscn" id="3_mx6da"]
+
+[sub_resource type="Animation" id="Animation_n2vme"]
+resource_name = "default"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_we30f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eesj0"]
+_data = {
+"RESET": SubResource("Animation_we30f"),
+"default": SubResource("Animation_n2vme")
+}
+
+[sub_resource type="GDScript" id="GDScript_6g3jm"]
+script/source = "extends Sprite2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hhns5"]
+
+[node name="AxeAbility" type="Node2D"]
+script = ExtResource("1_irkqv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "default"
+libraries = {
+"": SubResource("AnimationLibrary_eesj0")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_nr60p")
+script = SubResource("GDScript_6g3jm")
+
+[node name="HitboxComponent" parent="." instance=ExtResource("3_mx6da")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_hhns5")
