@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-signal upgrade_selected(upgrade: AbilityUpgrade)
+signal upgrade_selected(upgrade: )
 
 @export var upgrade_card_scene: PackedScene
 
