@@ -1,7 +1,28 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://b3g1p5pacow5w"]
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://b3g1p5pacow5w"]
 
 [ext_resource type="FontFile" uid="uid://tga0twb6cxtx" path="res://Resources/Theme/Rockboxcond12.ttf" id="1_m51aw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xu2mf"]
+bg_color = Color(0.247059, 0.14902, 0.192157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s4qpu"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(1, 1, 1, 0.4)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
 
 [resource]
 default_font = ExtResource("1_m51aw")
 default_font_size = 16
+ProgressBar/colors/font_color = Color(0.95, 0.95, 0.95, 1)
+ProgressBar/colors/font_outline_color = Color(1, 1, 1, 1)
+ProgressBar/colors/font_shadow_color = Color(0, 0, 0, 1)
+ProgressBar/constants/outline_size = 0
+ProgressBar/styles/background = SubResource("StyleBoxFlat_xu2mf")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_s4qpu")
