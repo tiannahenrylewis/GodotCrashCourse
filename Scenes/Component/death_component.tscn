@@ -1,0 +1,92 @@
+[gd_scene load_steps=9 format=3 uid="uid://8ifcw7djo7no"]
+
+[ext_resource type="Texture2D" uid="uid://cfxn8xhfqvap5" path="res://Scenes/GameObject/BasicEnemy/basic_enemy.png" id="1_ad6rs"]
+[ext_resource type="Script" path="res://Scenes/Component/death_component.gd" id="1_pp2ek"]
+
+[sub_resource type="Animation" id="Animation_v2bo7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_7g4jy"]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vnbwp"]
+_data = {
+"RESET": SubResource("Animation_v2bo7"),
+"default": SubResource("Animation_7g4jy")
+}
+
+[sub_resource type="Curve" id="Curve_6j0u1"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.86643, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_2di6k"]
+curve = SubResource("Curve_6j0u1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bkb2u"]
+particle_flag_disable_z = true
+direction = Vector3(2.08165e-12, -1, 2.08165e-12)
+spread = 10.0
+gravity = Vector3(2.08165e-12, 800, 2.08165e-12)
+initial_velocity_min = 175.0
+initial_velocity_max = 250.0
+angular_velocity_min = -1000.0
+angular_velocity_max = 1000.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_curve = SubResource("CurveTexture_2di6k")
+
+[node name="DeathComponent" type="Node2D"]
+script = ExtResource("1_pp2ek")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vnbwp")
+}
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_bkb2u")
+texture = ExtResource("1_ad6rs")
+lifetime = 0.5
+one_shot = true
+fixed_fps = 0
+interpolate = false
