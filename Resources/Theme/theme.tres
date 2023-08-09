@@ -1,6 +1,27 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://b3g1p5pacow5w"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://b3g1p5pacow5w"]
 
 [ext_resource type="FontFile" uid="uid://tga0twb6cxtx" path="res://Resources/Theme/Rockboxcond12.ttf" id="1_m51aw"]
+[ext_resource type="Texture2D" uid="uid://cfvrh0d2h6cnf" path="res://Assets/UI/ui.png" id="1_swe63"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3gigx"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+texture = ExtResource("1_swe63")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
+region_rect = Rect2(18, 2, 12, 12)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nijg7"]
+texture = ExtResource("1_swe63")
+texture_margin_left = 4.0
+texture_margin_top = 13.0
+texture_margin_right = 4.0
+texture_margin_bottom = 10.0
+region_rect = Rect2(0, 0, 16, 16)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xu2mf"]
 bg_color = Color(0.247059, 0.14902, 0.192157, 1)
@@ -20,6 +41,10 @@ corner_detail = 6
 [resource]
 default_font = ExtResource("1_m51aw")
 default_font_size = 16
+AlternatePanelContainer/base_type = &"PanelContainer"
+AlternatePanelContainer/styles/panel = SubResource("StyleBoxTexture_3gigx")
+Label/constants/line_spacing = 0
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_nijg7")
 ProgressBar/colors/font_color = Color(0.95, 0.95, 0.95, 1)
 ProgressBar/colors/font_outline_color = Color(1, 1, 1, 1)
 ProgressBar/colors/font_shadow_color = Color(0, 0, 0, 1)
