@@ -37,7 +37,7 @@ func pick_upgrades():
 	var chosen_upgrades: Array[AbilityUpgrade] = []
 	var filtered_upgrades = upgrade_pool.duplicate()
 	
-	for i in 2:
+	for i in 3:
 		if filtered_upgrades.size() == 0:
 			break
 			
