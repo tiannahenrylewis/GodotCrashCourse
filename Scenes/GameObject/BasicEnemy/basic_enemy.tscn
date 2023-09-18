@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ciiskoocl5t8s"]
+[gd_scene load_steps=14 format=3 uid="uid://ciiskoocl5t8s"]
 
 [ext_resource type="Texture2D" uid="uid://cfxn8xhfqvap5" path="res://Scenes/GameObject/BasicEnemy/basic_enemy.png" id="1_1r08b"]
 [ext_resource type="Script" path="res://Scenes/GameObject/BasicEnemy/basic_enemy.gd" id="1_k2vko"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://8ifcw7djo7no" path="res://Scenes/Component/death_component.tscn" id="4_b83wk"]
 [ext_resource type="PackedScene" uid="uid://cqrebo0pdy0p0" path="res://Scenes/Component/hurtbox_component.tscn" id="4_hj6ng"]
 [ext_resource type="PackedScene" uid="uid://bea5vjmgsw70" path="res://Scenes/Component/velocity_component.tscn" id="4_r3y3a"]
+[ext_resource type="PackedScene" uid="uid://cm4ie7i5r0262" path="res://Scenes/Component/hit_flash_component.tscn" id="8_18btx"]
 
 [sub_resource type="Animation" id="Animation_fc6th"]
 length = 0.001
@@ -120,6 +121,14 @@ health_component = NodePath("../HealthComponent")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("4_r3y3a")]
 
+[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("8_18btx")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Sprite2D")
+
+[node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("4_b83wk")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Sprite2D")
+
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_hj6ng")]
 health_component = NodePath("../HealthComponent")
 
@@ -127,10 +136,6 @@ health_component = NodePath("../HealthComponent")
 position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_4uydd")
 debug_color = Color(0.65098, 0.501961, 0.392157, 0.419608)
-
-[node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("4_b83wk")]
-health_component = NodePath("../HealthComponent")
-sprite = NodePath("../Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_1r08b")

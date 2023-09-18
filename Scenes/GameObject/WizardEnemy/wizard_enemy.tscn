@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cbge2vwgdurxb"]
+[gd_scene load_steps=16 format=3 uid="uid://cbge2vwgdurxb"]
 
 [ext_resource type="PackedScene" uid="uid://cu2xogii0nmi0" path="res://Scenes/Component/health_component.tscn" id="1_gq8t1"]
 [ext_resource type="Script" path="res://Scenes/GameObject/WizardEnemy/wizard_enemy.gd" id="1_ip21d"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://t3auu6c10yvp" path="res://Scenes/GameObject/WizardEnemy/wizard_enemy.png" id="2_n882j"]
 [ext_resource type="PackedScene" uid="uid://dtosx6e068c5" path="res://Scenes/Component/vial_drop_component.tscn" id="4_an7q8"]
 [ext_resource type="PackedScene" uid="uid://cqrebo0pdy0p0" path="res://Scenes/Component/hurtbox_component.tscn" id="4_jfkal"]
+[ext_resource type="PackedScene" uid="uid://cm4ie7i5r0262" path="res://Scenes/Component/hit_flash_component.tscn" id="5_n4858"]
+[ext_resource type="Shader" path="res://Scenes/Component/hit_flash_component.gdshader" id="6_ywnpj"]
 
 [sub_resource type="Animation" id="Animation_wrhrl"]
 length = 0.001
@@ -112,6 +114,11 @@ _data = {
 "walk": SubResource("Animation_hbjfv")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8gt0y"]
+resource_local_to_scene = true
+shader = ExtResource("6_ywnpj")
+shader_parameter/lerp_percent = null
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_vrku6"]
 radius = 8.0
 
@@ -138,6 +145,11 @@ health_component = NodePath("../HealthComponent")
 [node name="VelocityComponent" parent="." instance=ExtResource("2_ffkyj")]
 max_speed = 60
 acceleration = 20.0
+
+[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_n4858")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/Sprite2D")
+hit_flash_material = SubResource("ShaderMaterial_8gt0y")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("2_1dlly")]
 health_component = NodePath("../HealthComponent")
