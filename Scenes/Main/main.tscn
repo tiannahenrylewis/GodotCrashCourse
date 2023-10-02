@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ch8dbgbdrree0"]
+[gd_scene load_steps=13 format=3 uid="uid://ch8dbgbdrree0"]
 
 [ext_resource type="TileSet" uid="uid://cw7g38h7bjci8" path="res://Resources/tileset.tres" id="1_7djtr"]
 [ext_resource type="Script" path="res://Scenes/Main/main.gd" id="1_ikec6"]
@@ -11,10 +11,14 @@
 [ext_resource type="PackedScene" uid="uid://dxys1bv6sp4dg" path="res://Scenes/Manager/enemy_manager.tscn" id="2_tekes"]
 [ext_resource type="PackedScene" uid="uid://bm3q6g2mnysbp" path="res://Scenes/Manager/experience_manager.tscn" id="3_cstvr"]
 [ext_resource type="PackedScene" uid="uid://ddaqwud38aob6" path="res://Scenes/Manager/upgrade_manager.tscn" id="4_ifkrd"]
+[ext_resource type="PackedScene" uid="uid://cntqb6wtmaoy2" path="res://Scenes/UI/vignette.tscn" id="12_4so1l"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ikec6")
 end_screen_scene = ExtResource("2_eymfk")
+
+[node name="ExperienceBar" parent="." node_paths=PackedStringArray("experience_manager") instance=ExtResource("2_jdi5u")]
+experience_manager = NodePath("../ExperienceManager")
 
 [node name="ArenaTimeManager" parent="." instance=ExtResource("1_rkfyl")]
 
@@ -24,9 +28,6 @@ arena_time_manager = NodePath("../ArenaTimeManager")
 [node name="ExperienceManager" parent="." instance=ExtResource("3_cstvr")]
 
 [node name="UpgradeManager" parent="." node_paths=PackedStringArray("experience_manager") instance=ExtResource("4_ifkrd")]
-experience_manager = NodePath("../ExperienceManager")
-
-[node name="ExperienceBar" parent="." node_paths=PackedStringArray("experience_manager") instance=ExtResource("2_jdi5u")]
 experience_manager = NodePath("../ExperienceManager")
 
 [node name="ArenaTimeUI" parent="." node_paths=PackedStringArray("area_time_manager") instance=ExtResource("2_0m5sf")]
@@ -47,3 +48,5 @@ unique_name_in_owner = true
 position = Vector2(323, 180)
 
 [node name="Foreground" type="Node2D" parent="." groups=["ForegroundLayer"]]
+
+[node name="Vignette" parent="Foreground" instance=ExtResource("12_4so1l")]
