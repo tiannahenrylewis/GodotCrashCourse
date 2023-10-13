@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://dex4euqfbsog8"]
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://bolhlpalbokan"]
 
-[ext_resource type="Script" path="res://Resources/Upgrades/ability_upgrade.gd" id="1_xf2mj"]
+[ext_resource type="Script" path="res://Resources/Upgrades/ability_upgrade.gd" id="1_wmy5b"]
 
 [resource]
-script = ExtResource("1_xf2mj")
-id = "player_speed"
-max_quantity = 2
-name = "Move Speed"
-description = "Increases player movement speed by 10%."
+script = ExtResource("1_wmy5b")
+id = "sword_rate"
+max_quantity = 5
+name = "Sword Speed"
+description = "Increases the rate of the sword attack by 10%."
