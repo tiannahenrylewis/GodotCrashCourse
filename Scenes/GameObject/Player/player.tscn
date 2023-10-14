@@ -1,10 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://djrod1rir3pel"]
+[gd_scene load_steps=19 format=3 uid="uid://djrod1rir3pel"]
 
 [ext_resource type="Script" path="res://Scenes/GameObject/Player/player.gd" id="1_1qqnu"]
 [ext_resource type="Texture2D" uid="uid://yvjx28b0j31w" path="res://Scenes/GameObject/Player/player.png" id="1_v0im7"]
 [ext_resource type="PackedScene" uid="uid://cu2xogii0nmi0" path="res://Scenes/Component/health_component.tscn" id="2_5ivuk"]
 [ext_resource type="PackedScene" uid="uid://coyf4gnst42rj" path="res://Scenes/Ability/Controllers/SwordAbility/sword_ability_controller.tscn" id="2_7dofh"]
 [ext_resource type="PackedScene" uid="uid://bea5vjmgsw70" path="res://Scenes/Component/velocity_component.tscn" id="2_mc0ty"]
+[ext_resource type="PackedScene" uid="uid://c1cxbhbsr33b1" path="res://Scenes/Component/random_stream_player_2d_component.tscn" id="5_lmyan"]
+[ext_resource type="AudioStream" uid="uid://dgysob54itwjh" path="res://Assets/Audio/impactMining_000.ogg" id="6_qpgji"]
+[ext_resource type="AudioStream" uid="uid://clbygbg3x5tiv" path="res://Assets/Audio/impactMining_001.ogg" id="7_jc36n"]
+[ext_resource type="AudioStream" uid="uid://ch40ao5grojnv" path="res://Assets/Audio/impactMining_002.ogg" id="8_l5khc"]
+[ext_resource type="AudioStream" uid="uid://diyx2vp27oqug" path="res://Assets/Audio/impactMining_003.ogg" id="9_lhuv7"]
+[ext_resource type="AudioStream" uid="uid://vhcspu658k4e" path="res://Assets/Audio/impactMining_004.ogg" id="10_5v7ny"]
 
 [sub_resource type="Animation" id="Animation_hvcv6"]
 length = 0.001
@@ -128,6 +134,9 @@ acceleration = 25.0
 [node name="Abilities" type="Node" parent="."]
 
 [node name="SwordAbilityController" parent="Abilities" instance=ExtResource("2_7dofh")]
+
+[node name="HitRandomStreamPlayer" parent="." instance=ExtResource("5_lmyan")]
+streams = Array[AudioStream]([ExtResource("6_qpgji"), ExtResource("7_jc36n"), ExtResource("8_l5khc"), ExtResource("9_lhuv7"), ExtResource("10_5v7ny")])
 
 [node name="DamageIntervalTimer" type="Timer" parent="."]
 wait_time = 0.5
