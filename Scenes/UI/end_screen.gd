@@ -14,12 +14,20 @@ func _ready():
 	get_tree().paused = true
 	$%RestartButton.pressed.connect(on_restart_button_pressed)
 	$%QuitButton.pressed.connect(on_quit_button_pressed)
-	
-	
+
+
+func play_jingle(defeat: bool = false):
+	if defeat:
+		$DefeatStreamPlayer.play()
+	else:
+		$VictoryStreamPlayer.play()
+
+
 func set_defeat():
 	$%TitleLabel.text = "Defeat"
 	$%DescriptionLabel.text = "You Lost!"
-	
+	play_jingle(true)
+
 
 func set_victory():
 	$%TitleLabel.text = "Victory"

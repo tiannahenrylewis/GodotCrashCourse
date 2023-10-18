@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://clcj03eocblun"]
+
+[ext_resource type="AudioStream" uid="uid://pclq2vufikfm" path="res://Assets/Audio/Guerilla Tactics.mp3" id="1_7ekei"]
+[ext_resource type="Script" path="res://Scenes/auto_load/music_player.gd" id="2_fbniv"]
+
+[node name="MusicPlayer" type="AudioStreamPlayer"]
+process_mode = 3
+stream = ExtResource("1_7ekei")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"
+script = ExtResource("2_fbniv")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
