@@ -12,6 +12,8 @@ config_version=5
 
 config/name="Godot Crash Course"
 run/main_scene="res://Scenes/UI/main_menu.tscn"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="GodotCrashCourse"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -20,6 +22,7 @@ config/icon="res://icon.svg"
 GameEvents="*res://Scenes/auto_load/game_events.tscn"
 MusicPlayer="*res://Scenes/auto_load/music_player.tscn"
 ScreenTransition="*res://Scenes/auto_load/screen_transition.tscn"
+MetaProgression="*res://Scenes/auto_load/meta_progression.tscn"
 
 [debug]
 
