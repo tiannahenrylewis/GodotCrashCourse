@@ -2,22 +2,28 @@ extends CanvasLayer
 
 signal back_pressed
 
-@onready var window_Button = $%WindowButton
+@onready var window_button = %WindowButton
 @onready var sfx_slider = %SFXSlider
 @onready var music_slider = %MusicSlider
-@onready var back_button = $%BackButton
+@onready var back_button = %BackButton
+
+
+#@onready var window_Button = $%WindowButton
+#@onready var sfx_slider = %SFXSlider
+#@onready var music_slider = %MusicSlider
+#@onready var back_button = $%BackButton
 
 func _ready():
 	back_button.pressed.connect(on_back_pressed)
-	window_Button.pressed.connect(on_window_button_pressed)
+	window_button.pressed.connect(on_window_button_pressed)
 	sfx_slider.value_changed.connect(on_audio_slider_changed.bind("SFX"))
 	music_slider.value_changed.connect(on_audio_slider_changed.bind("Music"))
 	update_display()
 
 func update_display():
-	window_Button.text = "Fullscreen"
+	window_button.text = "Fullscreen"
 	if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
-		window_Button.text = "Window"
+		window_button.text = "Window"
 		
 	sfx_slider.value = get_bus_volume_percent("SFX")
 	music_slider.value = get_bus_volume_percent("Music")
