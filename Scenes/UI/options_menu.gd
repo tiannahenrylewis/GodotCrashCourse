@@ -8,11 +8,6 @@ signal back_pressed
 @onready var back_button = %BackButton
 
 
-#@onready var window_Button = $%WindowButton
-#@onready var sfx_slider = %SFXSlider
-#@onready var music_slider = %MusicSlider
-#@onready var back_button = $%BackButton
-
 func _ready():
 	back_button.pressed.connect(on_back_pressed)
 	window_button.pressed.connect(on_window_button_pressed)
